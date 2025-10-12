@@ -1,7 +1,12 @@
 import { motion } from 'framer-motion'
-import me from '../assets/me.jpg' // <-- place your image at: src/assets/me.jpg
+import React from 'react'
 
 export default function Home() {
+  const handleError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    // fallback to a harmless placeholder if the image can’t load
+    e.currentTarget.src = '/logo.svg'
+  }
+
   return (
     <section className="grid gap-8 md:grid-cols-[1.2fr_.8fr] items-center">
       <div>
@@ -24,14 +29,15 @@ export default function Home() {
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.4 }}
-        className="card overflow-hidden h-60 md:h-72"
+        className="card overflow-hidden aspect-[4/3] h-60 md:h-72"
       >
         <img
-          src={me}
+          src="/profile.jpg"            // <-- served from /public
           alt="Ruthwik Dovala"
-          className="block w-full h-full object-cover"
+          className="block w-full h-full object-cover object-center"
           loading="eager"
           decoding="async"
+          onError={handleError}
         />
       </motion.div>
     </section>
