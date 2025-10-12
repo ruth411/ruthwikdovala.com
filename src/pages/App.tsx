@@ -27,16 +27,38 @@ export default function App() {
           >
             RD
           </NavLink>
+
           <div className="flex items-center gap-3">
-            <ul className="hidden sm:flex gap-4">
-              <li><NavLink to="/" end className={({isActive})=> isActive ? 'chip' : 'opacity-80 hover:opacity-100'}>About</NavLink></li>
-              <li><NavLink to="/projects" className={({isActive})=> isActive ? 'chip' : 'opacity-80 hover:opacity-100'}>Projects</NavLink></li>
-              <li><NavLink to="/skills" className={({isActive})=> isActive ? 'chip' : 'opacity-80 hover:opacity-100'}>Skills</NavLink></li>
-              <li><NavLink to="/contact" className={({isActive})=> isActive ? 'chip' : 'opacity-80 hover:opacity-100'}>Contact</NavLink></li>
+            {/* Bordered chips for all nav links */}
+            <ul className="hidden sm:flex gap-2">
+              {[
+                { to: '/', label: 'About', end: true },
+                { to: '/projects', label: 'Projects' },
+                { to: '/skills', label: 'Skills' },
+                { to: '/contact', label: 'Contact' },
+              ].map(({ to, label, end }) => (
+                <li key={to}>
+                  <NavLink
+                    to={to}
+                    end={end}
+                    className={({ isActive }) =>
+                      `chip ${isActive ? 'border-accent text-accent' : 'opacity-80 hover:opacity-100'}`
+                    }
+                  >
+                    {label}
+                  </NavLink>
+                </li>
+              ))}
             </ul>
-            <button className="chip" onClick={()=> setTheme(theme==='dark'?'light':'dark')} aria-label="Toggle theme">
-              {theme==='dark' ? <Sun size={16}/> : <Moon size={16}/>}
-              <span className="hidden sm:inline">{theme==='dark' ? 'Light' : 'Dark'}</span>
+
+            {/* Theme toggle also a bordered chip */}
+            <button
+              className="chip"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+              <span className="hidden sm:inline">{theme === 'dark' ? 'Light' : 'Dark'}</span>
             </button>
           </div>
         </nav>
