@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Single Page App Redirect</title>
+    <script>
+      // Redirect to index.html preserving path for SPA routes on GitHub Pages
+      (function() {
+        var segment = window.location.pathname;
+        if (!segment || segment === '/') { window.location.replace('/'); return; }
+        window.location.replace('/');
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

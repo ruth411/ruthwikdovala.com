@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #0c1117;
+  --muted: #475569;
+  --card: #f5f7fb;
+  --border: #e5e7eb;
+  --accent: #6d28d9;
+  --accent2: #16a34a;
+}
+
+:root.dark {
+  --background: #0b0c10;
+  --foreground: #e6edf3;
+  --muted: #9aa4af;
+  --card: #111317;
+  --border: #1f232a;
+  --accent: #7c3aed;
+  --accent2: #22c55e;
+}
+
+* { @apply box-border; }
+html, body, #root { height: 100%; }
+a { @apply text-accent; }
+.container { @apply max-w-6xl mx-auto px-4; }
+.btn { @apply inline-flex items-center gap-2 rounded-2xl border px-4 py-2 bg-card text-foreground border-border; }
+.btn-primary { @apply bg-gradient-to-tr from-accent to-accent2 text-white border-0; }
+.chip { @apply inline-flex items-center gap-2 rounded-full border px-3 py-1 border-border; }
+.card { @apply border border-border rounded-2xl p-4 bg-card shadow-soft; }
