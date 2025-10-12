@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
-          lfs: true # safe if not using LFS; fixes missing-asset issues if you are
+          lfs: true
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -39,12 +39,10 @@ jobs:
       - name: Build
         run: npm run build
 
-      # Optional sanity check — keep it for now. If it fails, it tells you what's missing.
       - name: Verify assets exist
         run: |
           set -eux
           test -f dist/index.html
-          # your public/ files should be copied to dist/
           ls -l dist || true
           test -f dist/profile.jpg || (echo "ERROR: dist/profile.jpg missing (public/profile.jpg not copied)" && exit 1)
           test -f dist/CNAME || echo "WARN: CNAME missing (ok if domain set in Settings → Pages)"
