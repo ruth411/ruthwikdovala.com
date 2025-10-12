@@ -26,7 +26,7 @@ export default function Home() {
         className="card overflow-hidden h-60 md:h-72"
       >
         <img
-          src="../assets/profile.jpg"              // lives at public/profile.jpg
+          src="/profile.jpg"              // lives at public/profile.jpg
           alt="Ruthwik Dovala"
           className="block w-full h-full object-cover object-center"
           loading="eager"
