@@ -18,43 +18,37 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # 1) Checkout the repo (pull LFS objects too, harmless if you don't use LFS)
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
-          lfs: true
+          lfs: true # safe if not using LFS; fixes missing-asset issues if you are
 
-      # 2) Configure GitHub Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      # 3) Node toolchain
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
 
-      # 4) Install deps
       - name: Install
         run: npm ci || npm i
 
-      # 5) Build site
       - name: Build
         run: npm run build
 
-      # 6) Verify critical assets exist in the artifact (fail fast if missing)
+      # Optional sanity check — keep it for now. If it fails, it tells you what's missing.
       - name: Verify assets exist
         run: |
           set -eux
-          ls -l dist || true
           test -f dist/index.html
-          # Ensure your hero image and CNAME are included
-          test -f dist/profile.jpg || (echo "ERROR: dist/profile.jpg missing. Make sure the file is at public/profile.jpg before build." && exit 1)
-          test -f dist/CNAME || echo "WARN: dist/CNAME not found (ok if you set the custom domain in Settings → Pages)"
+          # your public/ files should be copied to dist/
+          ls -l dist || true
+          test -f dist/profile.jpg || (echo "ERROR: dist/profile.jpg missing (public/profile.jpg not copied)" && exit 1)
+          test -f dist/CNAME || echo "WARN: CNAME missing (ok if domain set in Settings → Pages)"
 
-      # 7) Upload the build output for Pages to deploy
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
