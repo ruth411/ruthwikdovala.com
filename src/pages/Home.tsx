@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import me from '@/assets/me.jpg' // <-- imported asset (hashed at build)
 
 export default function Home() {
   return (
@@ -26,11 +27,12 @@ export default function Home() {
         className="card overflow-hidden h-60 md:h-72"
       >
         <img
-          src="/ruthwik.jpg"
+          src={me}
           alt="Ruthwik Dovala"
           className="w-full h-full object-cover"
           loading="eager"
           decoding="async"
+          fetchpriority="high"
         />
       </motion.div>
     </section>
