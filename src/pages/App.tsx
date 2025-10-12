@@ -18,13 +18,18 @@ export default function App() {
   }, [theme])
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
       <header className="border-b border-border">
         <nav className="container flex items-center justify-between py-4">
-          <NavLink to="/" className="font-extrabold text-xl bg-gradient-to-tr from-accent to-accent2 bg-clip-text text-transparent">RD</NavLink>
+          <NavLink
+            to="/"
+            className="font-extrabold text-xl bg-gradient-to-tr from-accent to-accent2 bg-clip-text text-transparent"
+          >
+            RD
+          </NavLink>
           <div className="flex items-center gap-3">
             <ul className="hidden sm:flex gap-4">
-              <li><NavLink to="/" className={({isActive})=> isActive ? 'chip' : 'opacity-80 hover:opacity-100'}>About</NavLink></li>
+              <li><NavLink to="/" end className={({isActive})=> isActive ? 'chip' : 'opacity-80 hover:opacity-100'}>About</NavLink></li>
               <li><NavLink to="/projects" className={({isActive})=> isActive ? 'chip' : 'opacity-80 hover:opacity-100'}>Projects</NavLink></li>
               <li><NavLink to="/skills" className={({isActive})=> isActive ? 'chip' : 'opacity-80 hover:opacity-100'}>Skills</NavLink></li>
               <li><NavLink to="/contact" className={({isActive})=> isActive ? 'chip' : 'opacity-80 hover:opacity-100'}>Contact</NavLink></li>
@@ -36,11 +41,15 @@ export default function App() {
           </div>
         </nav>
       </header>
-      <main className="container py-8">
+
+      <main className="container py-8 flex-1">
         <Outlet />
       </main>
-      <footer className="container py-12 text-sm text-muted">
-        © {new Date().getFullYear()} Ruthwik Dovala. All rights reserved.
+
+      <footer className="mt-auto py-8 text-sm text-muted">
+        <div className="container text-center">
+          © {new Date().getFullYear()} Ruthwik Dovala. All rights reserved.
+        </div>
       </footer>
     </div>
   )
