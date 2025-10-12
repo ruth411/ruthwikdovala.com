@@ -29,29 +29,66 @@ export default function App() {
           </NavLink>
 
           <div className="flex items-center gap-3">
-            {/* Bordered chips for all nav links */}
             <ul className="hidden sm:flex gap-2">
-              {[
-                { to: '/', label: 'About', end: true },
-                { to: '/projects', label: 'Projects' },
-                { to: '/skills', label: 'Skills' },
-                { to: '/contact', label: 'Contact' },
-              ].map(({ to, label, end }) => (
-                <li key={to}>
-                  <NavLink
-                    to={to}
-                    end={end}
-                    className={({ isActive }) =>
-                      `chip ${isActive ? 'border-accent text-accent' : 'opacity-80 hover:opacity-100'}`
-                    }
-                  >
-                    {label}
-                  </NavLink>
-                </li>
-              ))}
+              {/* About */}
+              <li>
+                <NavLink
+                  to="/"
+                  end
+                  className={({ isActive }) =>
+                    `chip ${isActive ? 'border-accent text-accent' : 'opacity-80 hover:opacity-100'}`
+                  }
+                >
+                  About
+                </NavLink>
+              </li>
+
+              {/* Résumé (opens /public/resume.pdf) */}
+              <li>
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="chip opacity-80 hover:opacity-100"
+                >
+                  Résumé
+                </a>
+              </li>
+
+              {/* Other pages */}
+              <li>
+                <NavLink
+                  to="/projects"
+                  className={({ isActive }) =>
+                    `chip ${isActive ? 'border-accent text-accent' : 'opacity-80 hover:opacity-100'}`
+                  }
+                >
+                  Projects
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/skills"
+                  className={({ isActive }) =>
+                    `chip ${isActive ? 'border-accent text-accent' : 'opacity-80 hover:opacity-100'}`
+                  }
+                >
+                  Skills
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/contact"
+                  className={({ isActive }) =>
+                    `chip ${isActive ? 'border-accent text-accent' : 'opacity-80 hover:opacity-100'}`
+                  }
+                >
+                  Contact
+                </NavLink>
+              </li>
             </ul>
 
-            {/* Theme toggle also a bordered chip */}
+            {/* Theme toggle */}
             <button
               className="chip"
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
