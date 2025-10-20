@@ -2,9 +2,9 @@ import { useMemo, useState } from 'react'
 import { Mail, Coffee, Handshake, ArrowRight } from 'lucide-react'
 
 export default function Contact() {
-  // 👉 replace with your real email + (optionally) your scheduling link
-  const TO = 'youremail@example.com'
-  const SCHED_LINK = '#' // e.g. 'https://cal.com/your-handle/intro' or Calendly URL
+  // ✅ your real email
+  const TO = 'dovalaruthwik1@gmail.com'
+  const SCHED_LINK = '#' // e.g., 'https://cal.com/your-handle/intro' (optional)
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -27,7 +27,6 @@ export default function Contact() {
 
   return (
     <section className="container">
-      {/* Header */}
       <div className="text-center max-w-2xl mx-auto mb-10">
         <h1 className="text-3xl md:text-4xl font-extrabold mb-2">Let&apos;s Connect</h1>
         <p className="text-muted">
@@ -63,7 +62,7 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Coffee chat card */}
+            {/* Coffee chat card (optional) */}
             <div className="card flex items-center gap-4">
               <div className="shrink-0 rounded-xl border border-border p-3">
                 <Coffee size={20} />
@@ -77,7 +76,7 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Brand / collab card */}
+            {/* Collaborations card */}
             <div className="card flex items-center gap-4">
               <div className="shrink-0 rounded-xl border border-border p-3">
                 <Handshake size={20} />
@@ -144,7 +143,7 @@ export default function Contact() {
           </a>
 
           <p className="text-muted text-xs mt-3">
-            This opens your email client with a pre-filled message.
+            This opens your email client with the message pre-filled.
           </p>
         </div>
       </div>
