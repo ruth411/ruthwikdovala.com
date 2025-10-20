@@ -1,11 +1,12 @@
 import { Globe, Boxes, Cloud, Lock, Wrench, Code } from 'lucide-react'
+import { JSX } from 'react'
 
-type SkillItem = { label: string; icon?: string | null; emoji?: string }
+type SkillItem = {
+  label: string
+  iconKey?: string      // key into ICON map (Devicon)
+  svg?: JSX.Element     // custom inline SVG (e.g., for AWS services)
+}
 
-/**
- * Minimal icon map using Devicon CDN.
- * Add/adjust entries as you like. Unknown keys fall back to text-only.
- */
 const ICON: Record<string, string> = {
   // frontend
   react: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
@@ -24,47 +25,52 @@ const ICON: Record<string, string> = {
   r: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg',
   python: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
   ruby: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-plain.svg',
-  sql: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg', // generic DB icon
+  sql: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg', // generic DB glyph
 
   // data viz
   powerbi: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/powerbi/powerbi-original.svg',
   matplotlib: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg',
   tableau: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tableau/tableau-original.svg',
 
-  // cloud & devops
+  // devops / tools
   aws: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
   docker: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
   kubernetes: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg',
   githubactions: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/githubactions/githubactions-plain.svg',
   git: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
-
-  // tools
   postman: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg',
   jupyter: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg',
   excel: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/excel/excel-original.svg',
   mssql: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg',
 }
 
+// Compact, consistent 16×16 cloud glyph
+const CloudGlyph = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+    <path
+      fill="currentColor"
+      d="M7 18a4 4 0 0 1-.4-7.984A6 6 0 0 1 18.9 9.6a3.5 3.5 0 0 1-.4 7H7z"
+    />
+  </svg>
+)
+
 function Tag({ item }: { item: SkillItem }) {
-  const src = item.icon ? ICON[item.icon] : undefined
+  const src = item.iconKey ? ICON[item.iconKey] : undefined
   return (
-    <span className="chip bg-card/50 hover:bg-card transition-colors">
+    <span className="chip bg-card/50 hover:bg-card transition-colors whitespace-nowrap">
       {src ? (
         <img
           src={src}
-          alt={item.label}
-          width={18}
-          height={18}
-          className="inline-block mr-1 align-middle"
-          onError={(e) => {
-            // if icon 404s, drop the image and just show text
-            ;(e.currentTarget as HTMLImageElement).style.display = 'none'
-          }}
+          alt=""
+          width={16}
+          height={16}
+          className="w-4 h-4 opacity-80"
+          onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
         />
-      ) : item.emoji ? (
-        <span className="mr-1">{item.emoji}</span>
+      ) : item.svg ? (
+        <span className="opacity-80">{item.svg}</span>
       ) : null}
-      {item.label}
+      <span className="leading-none">{item.label}</span>
     </span>
   )
 }
@@ -94,73 +100,75 @@ function Card({
 }
 
 export default function Skills() {
-  // Pulled from your résumé’s SKILLS section; grouped to match the reference layout.
+  // Frontend
   const Frontend: SkillItem[] = [
-    { label: 'React', icon: 'react' },
-    { label: 'TypeScript', icon: 'typescript' },
-    { label: 'JavaScript', icon: 'javascript' },
-    { label: 'HTML', icon: 'html5' },
-    { label: 'CSS', icon: 'css3' },
-    { label: 'jQuery', icon: 'jquery' },
-    { label: 'Bootstrap', icon: 'bootstrap' },
-    { label: 'Angular', icon: 'angular' },
+    { label: 'React', iconKey: 'react' },
+    { label: 'TypeScript', iconKey: 'typescript' },
+    { label: 'JavaScript', iconKey: 'javascript' },
+    { label: 'HTML', iconKey: 'html5' },
+    { label: 'CSS', iconKey: 'css3' },
+    { label: 'jQuery', iconKey: 'jquery' },
+    { label: 'Bootstrap', iconKey: 'bootstrap' },
+    { label: 'Angular', iconKey: 'angular' },
   ]
 
+  // Languages
   const Programming: SkillItem[] = [
-    { label: 'C', icon: 'c' },
-    { label: 'C++', icon: 'cpp' },
-    { label: 'Java', icon: 'java' },
-    { label: 'R', icon: 'r' },
-    { label: 'Python', icon: 'python' },
-    { label: 'SQL', icon: 'sql' },
-    { label: 'Ruby', icon: 'ruby' },
+    { label: 'C', iconKey: 'c' },
+    { label: 'C++', iconKey: 'cpp' },
+    { label: 'Java', iconKey: 'java' },
+    { label: 'R', iconKey: 'r' },
+    { label: 'Python', iconKey: 'python' },
+    { label: 'SQL', iconKey: 'sql' },
+    { label: 'Ruby', iconKey: 'ruby' },
   ]
 
+  // Cloud & DevOps (AWS services now use the uniform CloudGlyph)
   const CloudDevOps: SkillItem[] = [
-    { label: 'AWS', icon: 'aws' },
-    { label: 'Docker', icon: 'docker' },
-    { label: 'Kubernetes', icon: 'kubernetes' },
-    { label: 'CI/CD Pipelines', emoji: '🔁' },
-    { label: 'GitHub Actions', icon: 'githubactions' },
-    { label: 'Git', icon: 'git' },
-    // AWS services as text chips
-    { label: 'S3', emoji: '☁️' },
-    { label: 'EC2', emoji: '☁️' },
-    { label: 'EKS', emoji: '☁️' },
-    { label: 'SNS', emoji: '☁️' },
-    { label: 'DynamoDB', emoji: '☁️' },
-    { label: 'Redshift', emoji: '☁️' },
-    { label: 'SageMaker', emoji: '☁️' },
-    { label: 'QuickSight', emoji: '☁️' },
+    { label: 'AWS', iconKey: 'aws' },
+    { label: 'Docker', iconKey: 'docker' },
+    { label: 'Kubernetes', iconKey: 'kubernetes' },
+    { label: 'CI/CD Pipelines', svg: <CloudGlyph /> },
+    { label: 'GitHub Actions', iconKey: 'githubactions' },
+    { label: 'Git', iconKey: 'git' },
+
+    // AWS services → use the consistent cloud glyph for alignment
+    { label: 'S3', svg: <CloudGlyph /> },
+    { label: 'EC2', svg: <CloudGlyph /> },
+    { label: 'EKS', svg: <CloudGlyph /> },
+    { label: 'SNS', svg: <CloudGlyph /> },
+    { label: 'DynamoDB', svg: <CloudGlyph /> },
+    { label: 'Redshift', svg: <CloudGlyph /> },
+    { label: 'SageMaker', svg: <CloudGlyph /> },
+    { label: 'QuickSight', svg: <CloudGlyph /> },
   ]
 
   const DataViz: SkillItem[] = [
-    { label: 'Power BI', icon: 'powerbi' },
-    { label: 'Matplotlib', icon: 'matplotlib' },
-    { label: 'Tableau', icon: 'tableau' },
+    { label: 'Power BI', iconKey: 'powerbi' },
+    { label: 'Matplotlib', iconKey: 'matplotlib' },
+    { label: 'Tableau', iconKey: 'tableau' },
   ]
 
   const SecurityAuth: SkillItem[] = [
-    { label: 'JWT', emoji: '🔐' },
-    { label: 'OAuth', emoji: '🔐' },
-    { label: 'API Security', emoji: '🛡️' },
+    { label: 'JWT', svg: <CloudGlyph /> },
+    { label: 'OAuth', svg: <CloudGlyph /> },
+    { label: 'API Security', svg: <CloudGlyph /> },
   ]
 
   const ToolsPlatforms: SkillItem[] = [
-    { label: 'Jupyter Notebook', icon: 'jupyter' },
-    { label: 'Postman', icon: 'postman' },
-    { label: 'Advanced Excel', icon: 'excel' },
-    { label: 'ETL Pipelines', emoji: '🧱' },
-    { label: 'SQL Server', icon: 'mssql' },
-    { label: 'Entity Framework', emoji: '🧩' },
-    { label: 'CRM Integration', emoji: '🤝' },
-    { label: 'E-commerce Dev', emoji: '🛒' },
-    { label: 'Real-time KPI Dashboards', emoji: '📈' },
+    { label: 'Jupyter Notebook', iconKey: 'jupyter' },
+    { label: 'Postman', iconKey: 'postman' },
+    { label: 'Advanced Excel', iconKey: 'excel' },
+    { label: 'ETL Pipelines', svg: <CloudGlyph /> },
+    { label: 'SQL Server', iconKey: 'mssql' },
+    { label: 'Entity Framework', svg: <CloudGlyph /> },
+    { label: 'CRM Integration', svg: <CloudGlyph /> },
+    { label: 'E-commerce', svg: <CloudGlyph /> },
+    { label: 'Real-time KPI Dashboards', svg: <CloudGlyph /> },
   ]
 
   return (
     <section className="container">
-      {/* Header like the reference */}
       <div className="text-center max-w-3xl mx-auto mb-10">
         <h1 className="text-3xl md:text-4xl font-extrabold mb-2">Skills &amp; Technologies</h1>
         <p className="text-muted">
