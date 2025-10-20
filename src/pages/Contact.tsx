@@ -1,10 +1,9 @@
 import { useMemo, useState } from 'react'
-import { Mail, Coffee, Handshake, ArrowRight } from 'lucide-react'
+import { Mail, ArrowRight } from 'lucide-react'
 
 export default function Contact() {
-  // ✅ your real email
+  // your real email
   const TO = 'dovalaruthwik1@gmail.com'
-  const SCHED_LINK = '#' // e.g., 'https://cal.com/your-handle/intro' (optional)
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -27,6 +26,7 @@ export default function Contact() {
 
   return (
     <section className="container">
+      {/* Header */}
       <div className="text-center max-w-2xl mx-auto mb-10">
         <h1 className="text-3xl md:text-4xl font-extrabold mb-2">Let&apos;s Connect</h1>
         <p className="text-muted">
@@ -36,7 +36,7 @@ export default function Contact() {
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 items-start">
-        {/* LEFT: contact options */}
+        {/* LEFT: only Email card now */}
         <div>
           <h2 className="text-xl font-bold mb-2 flex items-center gap-2">
             <span className="inline-block rounded-full border border-border px-2 py-1">💬</span>
@@ -48,7 +48,6 @@ export default function Contact() {
           </p>
 
           <div className="space-y-4">
-            {/* Email card */}
             <div className="card flex items-center gap-4">
               <div className="shrink-0 rounded-xl border border-border p-3">
                 <Mail size={20} />
@@ -58,37 +57,6 @@ export default function Contact() {
                 <p className="text-muted text-sm">Drop me a line anytime</p>
                 <a href={`mailto:${TO}`} className="chip mt-2 inline-block">
                   {TO}
-                </a>
-              </div>
-            </div>
-
-            {/* Coffee chat card (optional) */}
-            <div className="card flex items-center gap-4">
-              <div className="shrink-0 rounded-xl border border-border p-3">
-                <Coffee size={20} />
-              </div>
-              <div className="flex-1">
-                <h3 className="font-semibold">Coffee Chat</h3>
-                <p className="text-muted text-sm">Let&apos;s grab a quick virtual coffee</p>
-                <a href={SCHED_LINK} className="chip mt-2 inline-block" target="_blank" rel="noreferrer">
-                  Schedule a call
-                </a>
-              </div>
-            </div>
-
-            {/* Collaborations card */}
-            <div className="card flex items-center gap-4">
-              <div className="shrink-0 rounded-xl border border-border p-3">
-                <Handshake size={20} />
-              </div>
-              <div className="flex-1">
-                <h3 className="font-semibold">Collaborations</h3>
-                <p className="text-muted text-sm">Partnership &amp; project opportunities</p>
-                <a
-                  className="chip mt-2 inline-flex items-center gap-2"
-                  href={`mailto:${TO}?subject=${encodeURIComponent('[Collaboration] Hi Ruthwik')}`}
-                >
-                  Let&apos;s collaborate <ArrowRight size={16} />
                 </a>
               </div>
             </div>
