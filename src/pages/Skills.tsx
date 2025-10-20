@@ -177,6 +177,18 @@ export default function Skills() {
         <Card title="Security & Authentication" icon={<Lock size={18} />} items={SecurityAuth} />
         <Card title="Tools & Platforms" icon={<Wrench size={18} />} items={ToolsPlatforms} />
       </div>
+
+      {/* Always Learning banner */}
+      <div className="mt-8">
+        <div className="rounded-2xl border border-border p-6 md:p-8 text-center bg-gradient-to-br from-accent/10 to-accent2/10">
+          <h3 className="text-lg font-semibold mb-2">Always Learning</h3>
+          <p className="text-muted max-w-3xl mx-auto">
+            Technology evolves rapidly, and I’m committed to continuous learning. I regularly
+            explore new frameworks, tools, and best practices to stay current with industry trends
+            and deliver cutting-edge solutions.
+          </p>
+        </div>
+      </div>
     </section>
   )
 }
