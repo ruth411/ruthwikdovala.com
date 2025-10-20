@@ -13,8 +13,7 @@ export default function Home() {
           Hi, I'm <span className="text-accent">Ruthwik Dovala</span>
         </motion.h1>
         <p className="text-muted">
-          CS @ UNCC · ML for environmental monitoring · Fairness in data. I build end-to-end data
-          products: clean pipelines, useful analytics, and sleek UIs.
+         I explore ML and AI with a focus on drone autonomy, where I study algorithms to boost efficiency and reliability. Outside academics, I’m into mountain biking and reading.
         </p>
       </div>
 
