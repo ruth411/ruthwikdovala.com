@@ -46,7 +46,7 @@ export default function App() {
               {/* Résumé (opens /public/resume.pdf) */}
               <li>
                 <a
-                  href="/resume.pdf"
+                  href="/RuthwikDovala.pdf"
                   target="_blank"
                   rel="noreferrer"
                   className="chip opacity-80 hover:opacity-100"
