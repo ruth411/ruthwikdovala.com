@@ -35,7 +35,7 @@ const projects: Project[] = [
     ]
   },
   {
-    title: 'CA Comparative Analysis of Swarm Algorithms for Enhancing Communication in Drone Networks',
+    title: 'Comparative Analysis of Swarm Algorithms for Enhancing Communication in Drone Networks',
     publication: true,
     link: 'https://ieeexplore.ieee.org/document/10723925', 
     tags: ['PSO', 'ACO', 'ABC', 'Simulation', 'Robustness'],
