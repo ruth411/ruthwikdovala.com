@@ -5,7 +5,7 @@ type Project = {
   tags: string[]
   bullets: string[]
   publication?: boolean
-  link?: string
+  link?: string            // <- put your publication URL here
 }
 
 const projects: Project[] = [
@@ -35,18 +35,19 @@ const projects: Project[] = [
     ]
   },
   {
-    title: 'Comparative analysis of swarm algorithms for drone networks',
+    title: 'CA Comparative Analysis of Swarm Algorithms for Enhancing Communication in Drone Networks',
     publication: true,
+    link: 'https://ieeexplore.ieee.org/document/10723925', 
     tags: ['PSO', 'ACO', 'ABC', 'Simulation', 'Robustness'],
     bullets: [
       'Benchmarked swarm algorithms for scalability, efficiency, and robustness under dynamics.',
       'Identified best-fit approaches and proposed hybrid enhancements for communication.'
-    ],
-    // link: 'https://your-publication-link' // add when available
+    ]
   },
   {
-    title: 'Vision Transformers for disease prediction in chest X-rays',
+    title: 'Unleashing power of Vision Transformers for disease prediction in Chest X ray images',
     publication: true,
+    link: 'https://ieeexplore.ieee.org/document/10724826', 
     tags: [
       'ViT', 'ConvNeXt', 'DenseNet169', 'EfficientNetV2', 'InceptionV3', 'MobileNetV2', 'NasNetMobile',
       'TensorFlow', 'PyTorch', 'Medical Imaging'
@@ -57,8 +58,9 @@ const projects: Project[] = [
     ]
   },
   {
-    title: 'Deep learning for Diabetic Foot Ulcer detection (thermography)',
+    title: 'A Comparative Analysis of Deep Learning Models for Detection of Diabetic Foot Ulcer using Foot Thermography Images',
     publication: true,
+    link: 'https://ieeexplore.ieee.org/document/10724795', 
     tags: ['CNN', 'RNN', 'Transfer Learning', 'AUC-ROC', 'F1-Score', 'Grad-CAM'],
     bullets: [
       'Compared multiple DL models on foot thermography images; reported AUC-ROC & F1.',
@@ -91,11 +93,19 @@ export default function Projects() {
           <article key={p.title} className="card flex flex-col">
             <header className="mb-3">
               <h3 className="text-lg font-semibold leading-snug">{p.title}</h3>
-              {p.publication && (
-                <span className="mt-2 inline-flex items-center gap-1 text-xs chip">
+
+              {/* show just the link when a publication URL is present */}
+              {p.publication && p.link && (
+                <a
+                  href={p.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-2 inline-flex items-center gap-1 text-xs underline text-accent"
+                >
                   <BookOpen size={14} />
                   Publication
-                </span>
+                  <ExternalLink size={13} />
+                </a>
               )}
             </header>
 
@@ -110,19 +120,6 @@ export default function Projects() {
                 <li key={i}>{b}</li>
               ))}
             </ul>
-
-            {p.link && (
-              <div className="mt-4">
-                <a
-                  href={p.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn btn-primary inline-flex items-center gap-2"
-                >
-                  View publication <ExternalLink size={16} />
-                </a>
-              </div>
-            )}
           </article>
         ))}
       </div>
