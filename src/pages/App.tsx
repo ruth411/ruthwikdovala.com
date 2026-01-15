@@ -57,6 +57,18 @@ export default function App() {
               </a>
             </li>
 
+            {/* TriLLM */}
+            <li>
+              <a
+                href="https://trillm.ruthwikdovala.com"
+                target="_blank"
+                rel="noreferrer"
+                className="chip opacity-80 hover:opacity-100"
+              >
+                TriLLM
+              </a>
+            </li>
+
             {/* Other pages */}
             <li>
               <NavLink to="/projects" className={({ isActive }) => linkCls(isActive)}>
@@ -114,6 +126,15 @@ export default function App() {
                 onClick={closeMobile}
               >
                 Résumé
+              </a>
+              <a
+                href="https://trillm.ruthwikdovala.com"
+                target="_blank"
+                rel="noreferrer"
+                className="chip opacity-80 hover:opacity-100"
+                onClick={closeMobile}
+              >
+                TriLLM
               </a>
               <NavLink to="/projects" className={({ isActive }) => linkCls(isActive)} onClick={closeMobile}>
                 Projects
