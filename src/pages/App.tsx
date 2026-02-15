@@ -1,6 +1,7 @@
 import { Outlet, NavLink } from 'react-router-dom'
 import { Moon, Sun, Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import HeroFluidBackground from '../components/HeroFluidBackground'
 
 export default function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
@@ -24,7 +25,8 @@ export default function App() {
   const closeMobile = () => setMobileOpen(false)
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col">
+    <div className="min-h-screen bg-background text-foreground flex flex-col relative isolate">
+      <HeroFluidBackground rounded={false} className="fixed inset-0" />
       {/* sticky so the menu button stays visible on scroll */}
       <header className="sticky top-0 z-50 border-b border-border backdrop-blur supports-[backdrop-filter]:bg-background/80">
         <nav className="container flex items-center justify-between py-4">
