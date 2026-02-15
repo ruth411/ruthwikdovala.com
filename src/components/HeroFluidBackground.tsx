@@ -10,7 +10,6 @@ type PointerState = {
   y: number
   vx: number
   vy: number
-  down: number
 }
 
 const VERT = `
@@ -29,7 +28,6 @@ uniform vec2 u_res;
 uniform vec2 u_mouse;
 uniform vec2 u_velocity;
 uniform float u_radius;
-uniform float u_down;
 uniform float u_time;
 
 vec3 palette(float t) {
@@ -54,9 +52,10 @@ void main() {
 
   float d = distance(v_uv, u_mouse);
   float splat = exp(-d * d / max(0.0005, u_radius));
-  float speed = length(u_velocity) * 0.03;
-  vec3 ink = palette(fract(u_time * 0.03 + speed * 3.0));
-  prev += ink * splat * (0.55 + u_down * 0.45 + speed);
+  float motion = length(u_velocity);
+  float moveMask = smoothstep(0.0002, 0.003, motion);
+  vec3 ink = palette(fract(u_time * 0.03 + motion * 3.0));
+  prev += ink * splat * (moveMask * (0.35 + motion * 18.0));
 
   prev = clamp(prev, 0.0, 1.0);
   gl_FragColor = vec4(prev, 1.0);
@@ -143,7 +142,7 @@ export default function HeroFluidBackground({ className = '', rounded = true }: 
       return fb
     }
 
-    const pointer: PointerState = { x: 0.5, y: 0.5, vx: 0, vy: 0, down: 0 }
+    const pointer: PointerState = { x: -10, y: -10, vx: 0, vy: 0 }
 
     let simW = 0
     let simH = 0
@@ -189,16 +188,7 @@ export default function HeroFluidBackground({ className = '', rounded = true }: 
     }
 
     const onMove = (e: PointerEvent) => updatePointer(e.clientX, e.clientY)
-    const onDown = () => {
-      pointer.down = 1
-    }
-    const onUp = () => {
-      pointer.down = 0
-    }
-
     window.addEventListener('pointermove', onMove)
-    window.addEventListener('pointerdown', onDown)
-    window.addEventListener('pointerup', onUp)
     window.addEventListener('resize', resize)
     window.visualViewport?.addEventListener('resize', resize)
 
@@ -228,7 +218,6 @@ export default function HeroFluidBackground({ className = '', rounded = true }: 
       gl.uniform2f(gl.getUniformLocation(updateProgram, 'u_mouse'), pointer.x, pointer.y)
       gl.uniform2f(gl.getUniformLocation(updateProgram, 'u_velocity'), pointer.vx, pointer.vy)
       gl.uniform1f(gl.getUniformLocation(updateProgram, 'u_radius'), reduced ? 0.012 : 0.006)
-      gl.uniform1f(gl.getUniformLocation(updateProgram, 'u_down'), pointer.down)
       gl.uniform1f(gl.getUniformLocation(updateProgram, 'u_time'), (performance.now() - start) * 0.001)
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
 
@@ -259,8 +248,6 @@ export default function HeroFluidBackground({ className = '', rounded = true }: 
     return () => {
       cancelAnimationFrame(raf)
       window.removeEventListener('pointermove', onMove)
-      window.removeEventListener('pointerdown', onDown)
-      window.removeEventListener('pointerup', onUp)
       window.removeEventListener('resize', resize)
       window.visualViewport?.removeEventListener('resize', resize)
       if (buffer) gl.deleteBuffer(buffer)
