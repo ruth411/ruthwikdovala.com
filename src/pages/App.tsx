@@ -25,8 +25,8 @@ export default function App() {
   const closeMobile = () => setMobileOpen(false)
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col relative isolate">
-      <HeroFluidBackground rounded={false} className="fixed inset-0" />
+    <div className="min-h-screen bg-background/70 text-foreground flex flex-col relative isolate">
+      <HeroFluidBackground rounded={false} className="z-0" />
       {/* sticky so the menu button stays visible on scroll */}
       <header className="sticky top-0 z-50 border-b border-border backdrop-blur supports-[backdrop-filter]:bg-background/80">
         <nav className="container flex items-center justify-between py-4">
@@ -152,11 +152,11 @@ export default function App() {
         )}
       </header>
 
-      <main className="container py-8 flex-1">
+      <main className="container py-8 flex-1 relative z-10">
         <Outlet />
       </main>
 
-      <footer className="mt-auto py-8 text-sm text-muted">
+      <footer className="mt-auto py-8 text-sm text-muted relative z-10">
         <div className="container text-center">
           © {new Date().getFullYear()} Ruthwik Dovala. All rights reserved.
         </div>

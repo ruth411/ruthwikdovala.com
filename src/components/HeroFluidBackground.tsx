@@ -200,6 +200,7 @@ export default function HeroFluidBackground({ className = '', rounded = true }: 
     window.addEventListener('pointerdown', onDown)
     window.addEventListener('pointerup', onUp)
     window.addEventListener('resize', resize)
+    window.visualViewport?.addEventListener('resize', resize)
 
     resize()
 
@@ -261,6 +262,7 @@ export default function HeroFluidBackground({ className = '', rounded = true }: 
       window.removeEventListener('pointerdown', onDown)
       window.removeEventListener('pointerup', onUp)
       window.removeEventListener('resize', resize)
+      window.visualViewport?.removeEventListener('resize', resize)
       if (buffer) gl.deleteBuffer(buffer)
       if (texA) gl.deleteTexture(texA)
       if (texB) gl.deleteTexture(texB)
@@ -275,7 +277,7 @@ export default function HeroFluidBackground({ className = '', rounded = true }: 
     <canvas
       ref={canvasRef}
       aria-hidden="true"
-      className={`pointer-events-none absolute inset-0 -z-10 ${rounded ? 'rounded-3xl' : ''} ${className}`}
+      className={`pointer-events-none fixed inset-0 block h-screen w-screen ${rounded ? 'rounded-3xl' : ''} ${className}`}
     />
   )
 }
