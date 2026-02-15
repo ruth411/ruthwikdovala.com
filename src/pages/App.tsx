@@ -1,77 +1,54 @@
 import { Outlet, NavLink } from 'react-router-dom'
-import { Moon, Sun, Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import HeroFluidBackground from '../components/HeroFluidBackground'
 
 export default function App() {
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+  const [theme] = useState<'light' | 'dark'>(() => {
     if (typeof localStorage !== 'undefined') {
       return (localStorage.getItem('theme') as 'light' | 'dark') || 'dark'
     }
     return 'dark'
   })
-  const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
     const root = document.documentElement
     if (theme === 'dark') root.classList.add('dark')
     else root.classList.remove('dark')
-    localStorage.setItem('theme', theme)
   }, [theme])
 
   const linkCls = (isActive: boolean) =>
-    `chip ${isActive ? 'border-accent text-accent' : 'opacity-80 hover:opacity-100'}`
-
-  const closeMobile = () => setMobileOpen(false)
+    `inline-flex items-center justify-center rounded-2xl border px-3 py-2 text-sm font-medium bg-background/80 backdrop-blur transition ${
+      isActive ? 'border-accent text-accent' : 'border-border opacity-85 hover:opacity-100'
+    }`
 
   return (
     <div className="min-h-screen bg-background/70 text-foreground flex flex-col relative isolate">
       <HeroFluidBackground rounded={false} className="z-0" />
-      {/* sticky so the menu button stays visible on scroll */}
-      <header className="sticky top-0 z-50 border-b border-border backdrop-blur supports-[backdrop-filter]:bg-background/80">
-        <nav className="container flex items-center justify-between py-4">
-          <NavLink
-            to="/"
-            className="font-extrabold text-xl bg-gradient-to-tr from-accent to-accent2 bg-clip-text text-transparent"
-            onClick={closeMobile}
-          >
-            RD
-          </NavLink>
+      <main className="container py-8 pb-32 flex-1 relative z-10">
+        <Outlet />
+      </main>
 
-          {/* Desktop nav */}
-          <ul className="hidden sm:flex gap-2">
-            {/* About */}
+      <nav
+        aria-label="Primary"
+        className="fixed left-1/2 bottom-4 z-50 -translate-x-1/2 w-[min(96vw,900px)]"
+      >
+        <div className="rounded-3xl border border-border bg-card/70 backdrop-blur px-3 py-3 shadow-soft">
+          <ul className="flex flex-wrap items-center justify-center gap-2">
             <li>
               <NavLink to="/" end className={({ isActive }) => linkCls(isActive)}>
                 About
               </NavLink>
             </li>
-
-            {/* Résumé (opens PDF from /public) */}
             <li>
-              <a
-                href="/RuthwikDovala.pdf"
-                target="_blank"
-                rel="noreferrer"
-                className="chip opacity-80 hover:opacity-100"
-              >
-                Résumé
+              <a href="/RuthwikDovala.pdf" target="_blank" rel="noreferrer" className={linkCls(false)}>
+                Resume
               </a>
             </li>
-
-            {/* TriLLM */}
             <li>
-              <a
-                href="https://trillm.ruthwikdovala.com"
-                target="_blank"
-                rel="noreferrer"
-                className="chip opacity-80 hover:opacity-100"
-              >
+              <a href="https://trillm.ruthwikdovala.com" target="_blank" rel="noreferrer" className={linkCls(false)}>
                 TriLLM
               </a>
             </li>
-
-            {/* Other pages */}
             <li>
               <NavLink to="/projects" className={({ isActive }) => linkCls(isActive)}>
                 Projects
@@ -88,75 +65,10 @@ export default function App() {
               </NavLink>
             </li>
           </ul>
+        </div>
+      </nav>
 
-          <div className="flex items-center gap-2">
-            {/* Theme toggle */}
-            <button
-              className="chip"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              aria-label="Toggle theme"
-            >
-              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-              <span className="hidden sm:inline">{theme === 'dark' ? 'Light' : 'Dark'}</span>
-            </button>
-
-            {/* Mobile menu button */}
-            <button
-              className="chip sm:hidden"
-              onClick={() => setMobileOpen((v) => !v)}
-              aria-expanded={mobileOpen}
-              aria-controls="mobile-nav"
-              aria-label="Open menu"
-            >
-              {mobileOpen ? <X size={16} /> : <Menu size={16} />}
-            </button>
-          </div>
-        </nav>
-
-        {/* Mobile drawer */}
-        {mobileOpen && (
-          <div id="mobile-nav" className="sm:hidden border-t border-border">
-            <div className="container py-3 flex flex-col gap-2">
-              <NavLink to="/" end className={({ isActive }) => linkCls(isActive)} onClick={closeMobile}>
-                About
-              </NavLink>
-              <a
-                href="/RuthwikDovala.pdf"
-                target="_blank"
-                rel="noreferrer"
-                className="chip opacity-80 hover:opacity-100"
-                onClick={closeMobile}
-              >
-                Résumé
-              </a>
-              <a
-                href="https://trillm.ruthwikdovala.com"
-                target="_blank"
-                rel="noreferrer"
-                className="chip opacity-80 hover:opacity-100"
-                onClick={closeMobile}
-              >
-                TriLLM
-              </a>
-              <NavLink to="/projects" className={({ isActive }) => linkCls(isActive)} onClick={closeMobile}>
-                Projects
-              </NavLink>
-              <NavLink to="/skills" className={({ isActive }) => linkCls(isActive)} onClick={closeMobile}>
-                Skills
-              </NavLink>
-              <NavLink to="/contact" className={({ isActive }) => linkCls(isActive)} onClick={closeMobile}>
-                Contact
-              </NavLink>
-            </div>
-          </div>
-        )}
-      </header>
-
-      <main className="container py-8 flex-1 relative z-10">
-        <Outlet />
-      </main>
-
-      <footer className="mt-auto py-8 text-sm text-muted relative z-10">
+      <footer className="mt-auto pb-24 pt-8 text-sm text-muted relative z-10">
         <div className="container text-center">
           © {new Date().getFullYear()} Ruthwik Dovala. All rights reserved.
         </div>
