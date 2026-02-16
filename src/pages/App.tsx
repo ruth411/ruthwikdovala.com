@@ -1,22 +1,8 @@
 import { Outlet } from 'react-router-dom'
-import { useEffect, useState } from 'react'
 import { Github, Linkedin } from 'lucide-react'
 import HeroFluidBackground from '../components/HeroFluidBackground'
 
 export default function App() {
-  const [theme] = useState<'light' | 'dark'>(() => {
-    if (typeof localStorage !== 'undefined') {
-      return (localStorage.getItem('theme') as 'light' | 'dark') || 'dark'
-    }
-    return 'dark'
-  })
-
-  useEffect(() => {
-    const root = document.documentElement
-    if (theme === 'dark') root.classList.add('dark')
-    else root.classList.remove('dark')
-  }, [theme])
-
   return (
     <div className="min-h-screen bg-background/70 text-foreground flex flex-col relative isolate">
       <HeroFluidBackground rounded={false} className="z-0" />
