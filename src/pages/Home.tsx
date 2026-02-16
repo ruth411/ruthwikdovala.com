@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { ChevronDown } from 'lucide-react'
 import helloSticker from '../assets/hello-sticker.png'
 import Projects from './Projects'
 import Skills from './Skills'
@@ -7,12 +8,10 @@ import Contact from './Contact'
 
 export default function Home() {
   const [stickerFailed, setStickerFailed] = useState(false)
-  const linkCls =
-    'inline-flex items-center justify-center rounded-2xl border px-3 py-2 text-sm font-medium bg-background/80 border-border opacity-85 hover:opacity-100 hover:border-accent hover:text-accent transition'
 
   return (
     <div>
-      <section id="about" className="min-h-[70vh] flex items-center justify-center text-center py-4 scroll-mt-24">
+      <section id="about" className="min-h-screen flex items-center justify-center text-center py-4 scroll-mt-24">
         <div className="flex flex-col items-center gap-4">
           {stickerFailed ? (
             <motion.div
@@ -45,55 +44,32 @@ export default function Home() {
           >
             I am Ruthwik Dovala, an AI/ML engineer.
           </motion.h1>
-          <motion.nav
-            aria-label="Primary"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="mt-2"
+          <motion.a
+            href="#projects"
+            aria-label="Scroll down to projects"
+            className="mt-3 inline-flex flex-col items-center text-muted hover:text-foreground transition-colors"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <ul className="flex flex-wrap items-center justify-center gap-2">
-              <li>
-                <a href="#about" className={linkCls}>
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="/RuthwikDovala.pdf" target="_blank" rel="noreferrer" className={linkCls}>
-                  Resume
-                </a>
-              </li>
-              <li>
-                <a href="https://trillm.ruthwikdovala.com" target="_blank" rel="noreferrer" className={linkCls}>
-                  TriLLM
-                </a>
-              </li>
-              <li>
-                <a href="#projects" className={linkCls}>
-                  Projects
-                </a>
-              </li>
-              <li>
-                <a href="#skills" className={linkCls}>
-                  Skills
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className={linkCls}>
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </motion.nav>
+            <span className="text-sm">Scroll Down</span>
+            <motion.span
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
+              className="mt-1"
+            >
+              <ChevronDown size={24} />
+            </motion.span>
+          </motion.a>
         </div>
       </section>
 
       <section id="projects" className="scroll-mt-20">
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 80, scale: 0.96, filter: 'blur(8px)' }}
+          whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
           viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 0.55 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
           className="pt-10"
         >
           <div className="mx-auto mb-10 h-px w-[min(86vw,950px)] bg-gradient-to-r from-transparent via-border to-transparent" />
@@ -103,10 +79,10 @@ export default function Home() {
 
       <section id="skills" className="scroll-mt-20">
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 80, scale: 0.96, filter: 'blur(8px)' }}
+          whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
           viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 0.55 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
           className="pt-10"
         >
           <div className="mx-auto mb-10 h-px w-[min(86vw,950px)] bg-gradient-to-r from-transparent via-border to-transparent" />
@@ -116,10 +92,10 @@ export default function Home() {
 
       <section id="contact" className="scroll-mt-20">
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 80, scale: 0.96, filter: 'blur(8px)' }}
+          whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
           viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 0.55 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
           className="pt-10"
         >
           <div className="mx-auto mb-10 h-px w-[min(86vw,950px)] bg-gradient-to-r from-transparent via-border to-transparent" />
