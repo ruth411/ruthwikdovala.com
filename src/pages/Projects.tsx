@@ -40,6 +40,8 @@ const projects: Project[] = [
   {
     title: 'MacroMap',
     tags: ['Data Visualization', 'Analytics', 'Interactive Dashboard', 'Web App'],
+    link: 'https://macromap.ruthwikdovala.com/',
+    linkLabel: 'Live Project',
     bullets: [
       'Built an interactive macro-level mapping experience to explore trends and compare key indicators across regions.',
       'Designed the interface for quick filtering and pattern discovery to support fast, insight-driven decisions.'
