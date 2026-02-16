@@ -11,23 +11,6 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: 'Data analysis of crime against women in India using ML',
-    tags: ['Python', 'Pandas', 'NumPy', 'Scikit-Learn', 'EDA', 'Visualization'],
-    bullets: [
-      'Preprocessed national/state crime datasets; explored spatial & temporal patterns.',
-      'Trained classification/regression models (Logistic Regression, Decision Trees, Random Forest, K-Means) to find hot-spots and predict occurrences.',
-      'Derived actionable insights on key risk factors and proposed data-driven interventions.'
-    ]
-  },
-  {
-    title: 'Segmentation & classification of roads using satellite images',
-    tags: ['TensorFlow', 'Keras', 'CNN', 'U-Net', 'Computer Vision'],
-    bullets: [
-      'Built U-Net and CNN pipelines for road segmentation and surface-type classification.',
-      'Implemented robust preprocessing/augmentation for high-resolution satellite imagery.'
-    ]
-  },
-  {
     title: 'TriLLM',
     tags: ['React', 'TypeScript', 'LLM', 'Prompt Engineering', 'Web App'],
     link: 'https://trillm.ruthwikdovala.com',
@@ -45,14 +28,6 @@ const projects: Project[] = [
     bullets: [
       'Built an interactive macro-level mapping experience to explore trends and compare key indicators across regions.',
       'Designed the interface for quick filtering and pattern discovery to support fast, insight-driven decisions.'
-    ]
-  },
-  {
-    title: 'Swarm of drones for surveillance (simulation)',
-    tags: ['ROS', 'Gazebo', 'Path Planning', 'Multi-agent Systems'],
-    bullets: [
-      'Developed a simulation for a surveillance swarm with coordination and communication.',
-      'Implemented path planning, obstacle avoidance, and inter-drone comms primitives.'
     ]
   },
   {
@@ -86,6 +61,31 @@ const projects: Project[] = [
     bullets: [
       'Compared multiple DL models on foot thermography images; reported AUC-ROC & F1.',
       'Applied Grad-CAM for interpretability; toward non-invasive, real-time diagnostic tooling.'
+    ]
+  },
+  {
+    title: 'Data analysis of crime against women in India using ML',
+    tags: ['Python', 'Pandas', 'NumPy', 'Scikit-Learn', 'EDA', 'Visualization'],
+    bullets: [
+      'Preprocessed national/state crime datasets; explored spatial & temporal patterns.',
+      'Trained classification/regression models (Logistic Regression, Decision Trees, Random Forest, K-Means) to find hot-spots and predict occurrences.',
+      'Derived actionable insights on key risk factors and proposed data-driven interventions.'
+    ]
+  },
+  {
+    title: 'Segmentation & classification of roads using satellite images',
+    tags: ['TensorFlow', 'Keras', 'CNN', 'U-Net', 'Computer Vision'],
+    bullets: [
+      'Built U-Net and CNN pipelines for road segmentation and surface-type classification.',
+      'Implemented robust preprocessing/augmentation for high-resolution satellite imagery.'
+    ]
+  },
+  {
+    title: 'Swarm of drones for surveillance (simulation)',
+    tags: ['ROS', 'Gazebo', 'Path Planning', 'Multi-agent Systems'],
+    bullets: [
+      'Developed a simulation for a surveillance swarm with coordination and communication.',
+      'Implemented path planning, obstacle avoidance, and inter-drone comms primitives.'
     ]
   },
   {
