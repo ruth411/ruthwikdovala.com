@@ -68,7 +68,7 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0, y: 80, scale: 0.96, filter: 'blur(8px)' }}
           whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-          viewport={{ once: true, amount: 0.15 }}
+          viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
           className="pt-10"
         >
@@ -81,7 +81,7 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0, y: 80, scale: 0.96, filter: 'blur(8px)' }}
           whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-          viewport={{ once: true, amount: 0.15 }}
+          viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
           className="pt-10"
         >
@@ -94,7 +94,7 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0, y: 80, scale: 0.96, filter: 'blur(8px)' }}
           whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-          viewport={{ once: true, amount: 0.15 }}
+          viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
           className="pt-10"
         >
