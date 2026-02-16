@@ -24,6 +24,10 @@
 
 * { @apply box-border; }
 html, body, #root { height: 100%; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
 a { @apply text-accent; }
 .container { @apply max-w-6xl mx-auto px-4; }
 .btn { @apply inline-flex items-center gap-2 rounded-2xl border px-4 py-2 bg-card text-foreground border-border; }
