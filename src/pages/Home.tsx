@@ -8,6 +8,9 @@ import Contact from './Contact'
 
 export default function Home() {
   const [stickerFailed, setStickerFailed] = useState(false)
+  const scrollToProjects = () => {
+    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 
   return (
     <div>
@@ -44,8 +47,9 @@ export default function Home() {
           >
             I am Ruthwik Dovala, an AI/ML engineer.
           </motion.h1>
-          <motion.a
-            href="#projects"
+          <motion.button
+            type="button"
+            onClick={scrollToProjects}
             aria-label="Scroll down to projects"
             className="mt-3 inline-flex flex-col items-center text-muted hover:text-foreground transition-colors"
             initial={{ opacity: 0 }}
@@ -60,7 +64,7 @@ export default function Home() {
             >
               <ChevronDown size={24} />
             </motion.span>
-          </motion.a>
+          </motion.button>
         </div>
       </section>
 
