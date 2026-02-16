@@ -1,0 +1,57 @@
+[
+  {
+    "projectId": "trillm",
+    "q": "What is TriLLM in simple terms?",
+    "a": "TriLLM is a web app that helps users compare different LLM responses side by side so they can quickly evaluate quality and usefulness."
+  },
+  {
+    "projectId": "trillm",
+    "q": "What was your contribution in TriLLM?",
+    "a": "I designed and built the core interaction flow for comparing prompts and responses, with focus on usability and iteration speed."
+  },
+  {
+    "projectId": "macromap",
+    "q": "What does MacroMap do?",
+    "a": "MacroMap is an interactive analytics and mapping experience that lets users compare macro indicators across regions and spot trends quickly."
+  },
+  {
+    "projectId": "macromap",
+    "q": "Why is MacroMap useful?",
+    "a": "It reduces manual analysis effort by combining filters and map-first exploration so users can discover patterns faster."
+  },
+  {
+    "projectId": "swarm-algorithms-publication",
+    "q": "What is the key takeaway from your swarm algorithms publication?",
+    "a": "Different swarm algorithms show different tradeoffs in communication robustness and scalability, and hybrid strategies can improve performance."
+  },
+  {
+    "projectId": "vit-chest-xray-publication",
+    "q": "What did you compare in the chest X-ray publication?",
+    "a": "We compared Vision Transformers and multiple modern CNN architectures for disease prediction tasks using consistent evaluation workflows."
+  },
+  {
+    "projectId": "diabetic-foot-ulcer-publication",
+    "q": "How did you handle interpretability in the diabetic foot ulcer work?",
+    "a": "We used Grad-CAM to inspect model attention and improve interpretability alongside performance metrics like AUC-ROC and F1."
+  },
+  {
+    "projectId": "crime-women-india-ml",
+    "q": "What ML methods were used in the crime analysis project?",
+    "a": "The project used classification, regression, and clustering methods including Logistic Regression, Decision Trees, Random Forest, and K-Means."
+  },
+  {
+    "projectId": "road-segmentation-satellite",
+    "q": "How did you approach road segmentation from satellite imagery?",
+    "a": "I built U-Net and CNN pipelines and added robust preprocessing and augmentation to handle high-resolution satellite image variability."
+  },
+  {
+    "projectId": "drone-swarm-surveillance",
+    "q": "What does your drone swarm simulation include?",
+    "a": "It includes multi-agent coordination, path planning, obstacle avoidance, and communication primitives in a surveillance scenario."
+  },
+  {
+    "projectId": "resume-job-compatibility",
+    "q": "How does the resume-job matching project work?",
+    "a": "It uses NLP preprocessing and ML scoring techniques like TF-IDF and Naive Bayes to estimate resume-job compatibility."
+  }
+]

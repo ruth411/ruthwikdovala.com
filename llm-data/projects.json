@@ -1,0 +1,255 @@
+[
+  {
+    "id": "trillm",
+    "title": "TriLLM",
+    "category": "live",
+    "oneLiner": "Interactive web app to compare and explore LLM responses through a simple side-by-side workflow.",
+    "problem": "Users need a faster way to evaluate different LLM outputs without manually switching tools and losing context.",
+    "role": "Designed and built the frontend interaction model and response-comparison flow, focusing on usability and iteration speed.",
+    "stack": ["React", "TypeScript", "LLM", "Prompt Engineering", "Web App"],
+    "approach": [
+      "Built a clean comparison interface so prompts and responses can be reviewed in one place.",
+      "Optimized interaction flow to reduce friction while testing multiple prompt variants.",
+      "Focused on readable output presentation to help users spot quality differences quickly."
+    ],
+    "outcomes": [
+      "Improved practical prompt evaluation workflow for side-by-side response analysis.",
+      "Created a usable demo that showcases applied LLM product thinking."
+    ],
+    "links": [
+      { "label": "Live Project", "url": "https://trillm.ruthwikdovala.com" }
+    ],
+    "constraints": [
+      "Needed to keep UI responsive while handling variable response lengths.",
+      "Had to keep the interaction understandable for both technical and non-technical users."
+    ],
+    "futureWork": [
+      "Add saved prompt sessions and shareable comparisons.",
+      "Add structured response scoring dimensions for deeper evaluation."
+    ]
+  },
+  {
+    "id": "macromap",
+    "title": "MacroMap",
+    "category": "live",
+    "oneLiner": "Interactive macro-level mapping experience for exploring trends and comparing indicators across regions.",
+    "problem": "Analysts and decision-makers need fast, visual ways to inspect regional macro trends without heavy manual slicing.",
+    "role": "Built the user-facing analytics experience and interaction patterns for filtering and visual exploration.",
+    "stack": ["Data Visualization", "Analytics", "Interactive Dashboard", "Web App"],
+    "approach": [
+      "Designed map-centric interactions for quick region comparison.",
+      "Added filtering flows for faster pattern discovery.",
+      "Focused on clear visual hierarchy for scanning complex data."
+    ],
+    "outcomes": [
+      "Enabled quicker trend exploration and indicator comparison.",
+      "Delivered a practical dashboard-style interface for macro insights."
+    ],
+    "links": [
+      { "label": "Live Project", "url": "https://macromap.ruthwikdovala.com/" }
+    ],
+    "constraints": [
+      "Balanced detail and readability for multi-region comparisons.",
+      "Had to keep interactions intuitive while supporting multiple filters."
+    ],
+    "futureWork": [
+      "Add timeline playback and anomaly highlighting.",
+      "Support downloadable comparison snapshots."
+    ]
+  },
+  {
+    "id": "swarm-algorithms-publication",
+    "title": "Comparative Analysis of Swarm Algorithms for Enhancing Communication in Drone Networks",
+    "category": "publication",
+    "oneLiner": "Publication benchmarking PSO, ACO, and ABC-style approaches for communication performance in drone network scenarios.",
+    "problem": "Drone networks require robust communication strategies under dynamic conditions and scalability pressure.",
+    "role": "Contributed to comparative analysis setup, robustness evaluation, and interpretation of algorithm tradeoffs.",
+    "stack": ["PSO", "ACO", "ABC", "Simulation", "Robustness"],
+    "approach": [
+      "Benchmarked multiple swarm algorithms against communication-focused metrics.",
+      "Studied behavior under dynamic and scaled conditions.",
+      "Derived comparative insights to guide algorithm selection."
+    ],
+    "outcomes": [
+      "Identified strengths and limitations across algorithm families.",
+      "Proposed direction for hybrid enhancements in communication performance."
+    ],
+    "links": [
+      { "label": "Publication", "url": "https://ieeexplore.ieee.org/document/10723925" }
+    ],
+    "constraints": [
+      "Comparative fairness across different algorithm dynamics.",
+      "Maintaining robustness while scaling scenarios."
+    ],
+    "futureWork": [
+      "Evaluate hybrid swarm variants on broader benchmarks.",
+      "Incorporate more realistic network perturbations."
+    ]
+  },
+  {
+    "id": "vit-chest-xray-publication",
+    "title": "Unleashing power of Vision Transformers for disease prediction in Chest X ray images",
+    "category": "publication",
+    "oneLiner": "Publication comparing ViT and modern CNN families for chest X-ray disease prediction tasks.",
+    "problem": "Reliable, high-performing imaging models are needed for AI-assisted pneumonia and COVID-19 screening workflows.",
+    "role": "Contributed to model comparison setup, experimentation workflow, and analysis of architecture behavior.",
+    "stack": ["ViT", "ConvNeXt", "DenseNet169", "EfficientNetV2", "TensorFlow", "PyTorch", "Medical Imaging"],
+    "approach": [
+      "Compared transformer and CNN architectures under consistent experimental conditions.",
+      "Used practical training/evaluation utilities across TensorFlow and PyTorch.",
+      "Analyzed model performance tradeoffs for diagnostic use cases."
+    ],
+    "outcomes": [
+      "Produced comparative findings to inform architecture choices for imaging tasks.",
+      "Demonstrated strong practical understanding of transformer vs CNN behavior."
+    ],
+    "links": [
+      { "label": "Publication", "url": "https://ieeexplore.ieee.org/document/10724826" }
+    ],
+    "constraints": [
+      "Managing architecture complexity and training consistency.",
+      "Avoiding overclaims in medical-context interpretation."
+    ],
+    "futureWork": [
+      "Expand to larger cross-institution datasets.",
+      "Add calibration and uncertainty reporting for clinical reliability."
+    ]
+  },
+  {
+    "id": "diabetic-foot-ulcer-publication",
+    "title": "A Comparative Analysis of Deep Learning Models for Detection of Diabetic Foot Ulcer using Foot Thermography Images",
+    "category": "publication",
+    "oneLiner": "Publication evaluating deep learning approaches for diabetic foot ulcer detection from thermography imagery.",
+    "problem": "Early and non-invasive ulcer detection can significantly improve diabetic patient outcomes.",
+    "role": "Contributed to comparative model evaluation, metric analysis, and interpretability-driven assessment.",
+    "stack": ["CNN", "RNN", "Transfer Learning", "AUC-ROC", "F1-Score", "Grad-CAM"],
+    "approach": [
+      "Compared model families using performance and robustness metrics.",
+      "Applied Grad-CAM to improve interpretability of model predictions.",
+      "Assessed suitability for practical real-time diagnostic support."
+    ],
+    "outcomes": [
+      "Provided comparative evidence across model options for thermography-based detection.",
+      "Reinforced value of interpretability in healthcare ML applications."
+    ],
+    "links": [
+      { "label": "Publication", "url": "https://ieeexplore.ieee.org/document/10724795" }
+    ],
+    "constraints": [
+      "Balancing predictive performance with interpretability.",
+      "Maintaining rigor for healthcare-context reporting."
+    ],
+    "futureWork": [
+      "Study generalization across broader patient groups.",
+      "Investigate deployment-friendly model compression."
+    ]
+  },
+  {
+    "id": "crime-women-india-ml",
+    "title": "Data analysis of crime against women in India using ML",
+    "category": "other",
+    "oneLiner": "ML and EDA project exploring spatial and temporal crime patterns to support data-driven interventions.",
+    "problem": "Crime data is often fragmented and hard to translate into actionable regional insights.",
+    "role": "Handled preprocessing, exploratory analysis, model experimentation, and interpretation of risk factors.",
+    "stack": ["Python", "Pandas", "NumPy", "Scikit-Learn", "EDA", "Visualization"],
+    "approach": [
+      "Preprocessed national/state datasets and standardized analysis inputs.",
+      "Applied classification/regression/clustering models to uncover patterns.",
+      "Mapped trends to possible policy and intervention directions."
+    ],
+    "outcomes": [
+      "Identified important regional and temporal patterns.",
+      "Generated actionable insights grounded in data analysis."
+    ],
+    "links": [],
+    "constraints": [
+      "Data quality and consistency issues across sources.",
+      "Need to present findings in an interpretable way for stakeholders."
+    ],
+    "futureWork": [
+      "Add real-time data updates and dynamic dashboards.",
+      "Integrate socioeconomic features for richer modeling."
+    ]
+  },
+  {
+    "id": "road-segmentation-satellite",
+    "title": "Segmentation & classification of roads using satellite images",
+    "category": "other",
+    "oneLiner": "Computer vision project using U-Net/CNN pipelines for road segmentation and surface-type classification.",
+    "problem": "Road extraction and classification from satellite imagery is challenging due to resolution, noise, and variation.",
+    "role": "Built training pipelines, augmentation strategy, and model evaluation for segmentation/classification tasks.",
+    "stack": ["TensorFlow", "Keras", "CNN", "U-Net", "Computer Vision"],
+    "approach": [
+      "Developed U-Net and CNN workflows for complementary tasks.",
+      "Used preprocessing and augmentation to improve robustness.",
+      "Evaluated outputs for practical road-analysis scenarios."
+    ],
+    "outcomes": [
+      "Produced usable segmentation and classification baselines.",
+      "Strengthened practical CV pipeline development skills."
+    ],
+    "links": [],
+    "constraints": [
+      "High-resolution imagery processing cost.",
+      "Class imbalance and variation across geographies."
+    ],
+    "futureWork": [
+      "Add geospatial post-processing for cleaner road graphs.",
+      "Explore transformer-based segmentation variants."
+    ]
+  },
+  {
+    "id": "drone-swarm-surveillance",
+    "title": "Swarm of drones for surveillance (simulation)",
+    "category": "other",
+    "oneLiner": "Simulation project for coordinated drone surveillance with path planning and communication behaviors.",
+    "problem": "Multi-drone surveillance needs coordination and collision-safe planning under changing environments.",
+    "role": "Implemented simulation logic for coordination, path planning, and inter-drone communication primitives.",
+    "stack": ["ROS", "Gazebo", "Path Planning", "Multi-agent Systems"],
+    "approach": [
+      "Built simulation scenarios for coordinated coverage.",
+      "Implemented obstacle-aware path planning behavior.",
+      "Modeled communication primitives for swarm coordination."
+    ],
+    "outcomes": [
+      "Delivered a functional simulation setup for surveillance workflows.",
+      "Demonstrated multi-agent systems implementation experience."
+    ],
+    "links": [],
+    "constraints": [
+      "Balancing coordination quality and simulation complexity.",
+      "Maintaining stable behavior with multiple agents."
+    ],
+    "futureWork": [
+      "Add more realistic communication latency/noise modeling.",
+      "Test reinforcement learning based coordination policies."
+    ]
+  },
+  {
+    "id": "resume-job-compatibility",
+    "title": "Resume to Job listing compatibility (matching)",
+    "category": "other",
+    "oneLiner": "NLP-based matching system to score resume-job similarity and support screening efficiency.",
+    "problem": "Manual resume screening is slow and can introduce inconsistency and bias.",
+    "role": "Built end-to-end preprocessing and scoring pipeline using classic NLP/ML techniques.",
+    "stack": ["Python", "TF-IDF", "Naive Bayes", "NLP", "Pipelines"],
+    "approach": [
+      "Created text preprocessing and feature extraction pipeline.",
+      "Applied classification and similarity scoring methods.",
+      "Designed modular workflow suitable for scaling."
+    ],
+    "outcomes": [
+      "Improved matching consistency through data-driven scoring.",
+      "Produced a practical architecture for iterative enhancement."
+    ],
+    "links": [],
+    "constraints": [
+      "Need to reduce bias while preserving relevance.",
+      "Handling diverse resume formatting quality."
+    ],
+    "futureWork": [
+      "Add embedding-based semantic matching.",
+      "Add recruiter feedback loop for continuous improvement."
+    ]
+  }
+]

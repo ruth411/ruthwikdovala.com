@@ -1,6 +1,9 @@
 import { BookOpen, ExternalLink } from 'lucide-react'
+import { useState } from 'react'
+import ProjectAssistant from '../components/ProjectAssistant'
 
 type Project = {
+  id: string
   title: string
   tags: string[]
   bullets: string[]
@@ -11,6 +14,7 @@ type Project = {
 
 const projects: Project[] = [
   {
+    id: 'trillm',
     title: 'TriLLM',
     tags: ['React', 'TypeScript', 'LLM', 'Prompt Engineering', 'Web App'],
     link: 'https://trillm.ruthwikdovala.com',
@@ -21,6 +25,7 @@ const projects: Project[] = [
     ]
   },
   {
+    id: 'macromap',
     title: 'MacroMap',
     tags: ['Data Visualization', 'Analytics', 'Interactive Dashboard', 'Web App'],
     link: 'https://macromap.ruthwikdovala.com/',
@@ -31,6 +36,7 @@ const projects: Project[] = [
     ]
   },
   {
+    id: 'swarm-algorithms-publication',
     title: 'Comparative Analysis of Swarm Algorithms for Enhancing Communication in Drone Networks',
     publication: true,
     link: 'https://ieeexplore.ieee.org/document/10723925', 
@@ -41,6 +47,7 @@ const projects: Project[] = [
     ]
   },
   {
+    id: 'vit-chest-xray-publication',
     title: 'Unleashing power of Vision Transformers for disease prediction in Chest X ray images',
     publication: true,
     link: 'https://ieeexplore.ieee.org/document/10724826', 
@@ -54,6 +61,7 @@ const projects: Project[] = [
     ]
   },
   {
+    id: 'diabetic-foot-ulcer-publication',
     title: 'A Comparative Analysis of Deep Learning Models for Detection of Diabetic Foot Ulcer using Foot Thermography Images',
     publication: true,
     link: 'https://ieeexplore.ieee.org/document/10724795', 
@@ -64,6 +72,7 @@ const projects: Project[] = [
     ]
   },
   {
+    id: 'crime-women-india-ml',
     title: 'Data analysis of crime against women in India using ML',
     tags: ['Python', 'Pandas', 'NumPy', 'Scikit-Learn', 'EDA', 'Visualization'],
     bullets: [
@@ -73,6 +82,7 @@ const projects: Project[] = [
     ]
   },
   {
+    id: 'road-segmentation-satellite',
     title: 'Segmentation & classification of roads using satellite images',
     tags: ['TensorFlow', 'Keras', 'CNN', 'U-Net', 'Computer Vision'],
     bullets: [
@@ -81,6 +91,7 @@ const projects: Project[] = [
     ]
   },
   {
+    id: 'drone-swarm-surveillance',
     title: 'Swarm of drones for surveillance (simulation)',
     tags: ['ROS', 'Gazebo', 'Path Planning', 'Multi-agent Systems'],
     bullets: [
@@ -89,6 +100,7 @@ const projects: Project[] = [
     ]
   },
   {
+    id: 'resume-job-compatibility',
     title: 'Resume ↔ Job listing compatibility (matching)',
     tags: ['Python', 'TF-IDF', 'Naive Bayes', 'NLP', 'Pipelines'],
     bullets: [
@@ -99,6 +111,9 @@ const projects: Project[] = [
 ]
 
 export default function Projects() {
+  const [selectedProjectId, setSelectedProjectId] = useState<string | undefined>()
+  const [seedQuestion, setSeedQuestion] = useState<string | undefined>()
+
   return (
     <section className="container">
       <div className="text-center max-w-3xl mx-auto mb-10">
@@ -109,9 +124,15 @@ export default function Projects() {
         </p>
       </div>
 
+      <ProjectAssistant
+        selectedProjectId={selectedProjectId}
+        seedQuestion={seedQuestion}
+        onSeedConsumed={() => setSeedQuestion(undefined)}
+      />
+
       <div className="grid gap-5 md:grid-cols-2">
         {projects.map((p) => (
-          <article key={p.title} className="card flex flex-col">
+          <article key={p.id} className="card flex flex-col">
             <header className="mb-3">
               <h3 className="text-lg font-semibold leading-snug">{p.title}</h3>
 
@@ -141,6 +162,19 @@ export default function Projects() {
                 <li key={i}>{b}</li>
               ))}
             </ul>
+
+            <div className="mt-4">
+              <button
+                type="button"
+                className="btn"
+                onClick={() => {
+                  setSelectedProjectId(p.id)
+                  setSeedQuestion(`Explain ${p.title} in simple terms and what my role was.`)
+                }}
+              >
+                Ask AI about this
+              </button>
+            </div>
           </article>
         ))}
       </div>
