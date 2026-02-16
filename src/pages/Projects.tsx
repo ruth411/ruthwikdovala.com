@@ -38,6 +38,14 @@ const projects: Project[] = [
     ]
   },
   {
+    title: 'MacroMap',
+    tags: ['Data Visualization', 'Analytics', 'Interactive Dashboard', 'Web App'],
+    bullets: [
+      'Built an interactive macro-level mapping experience to explore trends and compare key indicators across regions.',
+      'Designed the interface for quick filtering and pattern discovery to support fast, insight-driven decisions.'
+    ]
+  },
+  {
     title: 'Swarm of drones for surveillance (simulation)',
     tags: ['ROS', 'Gazebo', 'Path Planning', 'Multi-agent Systems'],
     bullets: [
