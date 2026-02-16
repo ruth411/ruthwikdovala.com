@@ -14,7 +14,9 @@ let knownProjectIdsCache: Set<string> | null = null
 
 async function getKnownProjectIds(): Promise<Set<string>> {
   if (knownProjectIdsCache) return knownProjectIdsCache
-  const filePath = path.resolve(process.cwd(), 'llm-data/projects.json')
+  const filePath = process.cwd().endsWith('/server')
+    ? path.resolve(process.cwd(), '../llm-data/projects.json')
+    : path.resolve(process.cwd(), 'llm-data/projects.json')
   const raw = await fs.readFile(filePath, 'utf-8')
   const projects = parseProjectDocs(JSON.parse(raw))
   knownProjectIdsCache = new Set(projects.map((p) => p.id))

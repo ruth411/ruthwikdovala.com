@@ -72,8 +72,15 @@ function faqChunks(items: ProjectFaq[]): RawChunk[] {
 }
 
 async function loadData() {
-  const projectPath = path.resolve(process.cwd(), 'llm-data/projects.json')
-  const faqPath = path.resolve(process.cwd(), 'llm-data/faq.json')
+  const root = path.resolve(process.cwd(), '..')
+  const projectPath =
+    process.cwd().endsWith('/server')
+      ? path.resolve(root, 'llm-data/projects.json')
+      : path.resolve(process.cwd(), 'llm-data/projects.json')
+  const faqPath =
+    process.cwd().endsWith('/server')
+      ? path.resolve(root, 'llm-data/faq.json')
+      : path.resolve(process.cwd(), 'llm-data/faq.json')
 
   const projectRaw = JSON.parse(await fs.readFile(projectPath, 'utf-8'))
   const faqRaw = JSON.parse(await fs.readFile(faqPath, 'utf-8'))
@@ -85,7 +92,9 @@ async function loadData() {
 }
 
 async function writeIndex(index: IndexedChunk[]) {
-  const outPath = path.resolve(process.cwd(), 'server/data/index.json')
+  const outPath = process.cwd().endsWith('/server')
+    ? path.resolve(process.cwd(), 'data/index.json')
+    : path.resolve(process.cwd(), 'server/data/index.json')
   await fs.mkdir(path.dirname(outPath), { recursive: true })
   await fs.writeFile(outPath, JSON.stringify(index, null, 2), 'utf-8')
 }

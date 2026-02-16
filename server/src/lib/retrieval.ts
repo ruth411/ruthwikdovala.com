@@ -21,7 +21,9 @@ function cosineSimilarity(a: number[], b: number[]): number {
 async function loadIndex(): Promise<IndexedChunk[]> {
   if (cachedIndex) return cachedIndex
 
-  const filePath = path.resolve(process.cwd(), 'server/data/index.json')
+  const filePath = process.cwd().endsWith('/server')
+    ? path.resolve(process.cwd(), 'data/index.json')
+    : path.resolve(process.cwd(), 'server/data/index.json')
   const raw = await fs.readFile(filePath, 'utf-8')
   const parsed = JSON.parse(raw) as IndexedChunk[]
   cachedIndex = parsed
