@@ -55,7 +55,7 @@ void main() {
   float motion = length(u_velocity);
   float moveMask = smoothstep(0.0002, 0.003, motion);
   vec3 ink = palette(fract(u_time * 0.03 + motion * 3.0));
-  prev += ink * splat * (moveMask * (0.35 + motion * 18.0));
+  prev += ink * splat * (moveMask * (0.22 + motion * 11.0));
 
   prev = clamp(prev, 0.0, 1.0);
   gl_FragColor = vec4(prev, 1.0);
@@ -217,7 +217,7 @@ export default function HeroFluidBackground({ className = '', rounded = true }: 
       gl.uniform2f(gl.getUniformLocation(updateProgram, 'u_res'), simW, simH)
       gl.uniform2f(gl.getUniformLocation(updateProgram, 'u_mouse'), pointer.x, pointer.y)
       gl.uniform2f(gl.getUniformLocation(updateProgram, 'u_velocity'), pointer.vx, pointer.vy)
-      gl.uniform1f(gl.getUniformLocation(updateProgram, 'u_radius'), reduced ? 0.012 : 0.006)
+      gl.uniform1f(gl.getUniformLocation(updateProgram, 'u_radius'), reduced ? 0.009 : 0.0045)
       gl.uniform1f(gl.getUniformLocation(updateProgram, 'u_time'), (performance.now() - start) * 0.001)
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
 
