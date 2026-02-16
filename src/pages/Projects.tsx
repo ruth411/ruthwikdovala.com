@@ -6,6 +6,7 @@ type Project = {
   bullets: string[]
   publication?: boolean
   link?: string            // <- put your publication URL here
+  linkLabel?: string
 }
 
 const projects: Project[] = [
@@ -24,6 +25,16 @@ const projects: Project[] = [
     bullets: [
       'Built U-Net and CNN pipelines for road segmentation and surface-type classification.',
       'Implemented robust preprocessing/augmentation for high-resolution satellite imagery.'
+    ]
+  },
+  {
+    title: 'TriLLM',
+    tags: ['React', 'TypeScript', 'LLM', 'Prompt Engineering', 'Web App'],
+    link: 'https://trillm.ruthwikdovala.com',
+    linkLabel: 'Live Project',
+    bullets: [
+      'Built an interactive web app to compare and explore LLM outputs with a clean user workflow.',
+      'Focused on fast iteration, prompt quality, and usability so users can evaluate responses effectively.'
     ]
   },
   {
@@ -94,8 +105,8 @@ export default function Projects() {
             <header className="mb-3">
               <h3 className="text-lg font-semibold leading-snug">{p.title}</h3>
 
-              {/* show just the link when a publication URL is present */}
-              {p.publication && p.link && (
+              {/* show publication or project links when provided */}
+              {p.link && (
                 <a
                   href={p.link}
                   target="_blank"
@@ -103,7 +114,7 @@ export default function Projects() {
                   className="mt-2 inline-flex items-center gap-1 text-xs underline text-accent"
                 >
                   <BookOpen size={14} />
-                  Publication
+                  {p.linkLabel || (p.publication ? 'Publication' : 'Project Link')}
                   <ExternalLink size={13} />
                 </a>
               )}
